@@ -1,1 +1,105 @@
-<h1> referee table</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./referee.html">Referee</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./game.html">Game</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+        <div class="row my-5">
+            <h3 class="text-center">Existing Referees</h3>
+        <table class="table text-center">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+              <tbody>
+                  <tr>
+                      <td>1</td>
+                      <td>John Doe</td>
+                      <td>4.0</td>
+                      <td>42</td>
+                      <td>A</td>
+                      <td><span class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Alex Krang</td>
+                    <td>2.0</td>
+                    <td>32</td>
+                    <td>B</td>
+                    <td><span class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
+                </tr>
+              </tbody>
+          </table>
+          <div class="my-5 row">
+            <h3 class="text-center">Add Referee</h3>
+            <form v-on:submit.prevent="">
+                <div class="mb-3">
+                  <label for="" class="form-label">First Name</label>
+                  <input type="text" v-model=""
+                   class="form-control" id="">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Last Name</label>
+                  <input type="text" v-model="" class="form-control" id="">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Age</label>
+                  <input type="number" v-model="" class="form-control" id="">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Grade</label>
+                  <input type="text" v-model="" class="form-control" id="">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Rating</label>
+                    <input type="number" v-model="" class="form-control" id="">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+          </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </body>
+</html>
