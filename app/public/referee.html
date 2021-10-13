@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">ISRA</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,7 +38,13 @@
     </nav>
     <div class="container">
         <div class="row my-5">
-            <h3 class="text-center">Existing Referees</h3>
+            <h3 class="text-center">Existing Referees 
+              <span class="m-3">
+                <a href="addreferee.html">
+                  <button type="button" class="btn btn-success btn-sm">Add New</button>
+                </a>
+              </span>
+            </h3>
         <table class="table text-center">
             <thead>
               <tr>
@@ -69,7 +75,8 @@
                 </tr>
               </tbody>
           </table>
-          <div class="my-5 row">
+        </div>
+          <!-- <div class="my-5 row">
             <h3 class="text-center">Add Referee</h3>
             <form v-on:submit.prevent="">
                 <div class="mb-3">
@@ -95,8 +102,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-          </div>
-        </div>
+          </div> -->
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
