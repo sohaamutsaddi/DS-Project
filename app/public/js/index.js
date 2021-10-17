@@ -3,6 +3,8 @@ const SomeApp = {
       return {
         referees: [],
         games: [],
+        refereeForm:{},
+        gameForm:{},
       }
     },
     computed: {},
@@ -31,33 +33,55 @@ const SomeApp = {
             })
         },
         
-        // postNewOffer(evt) {
+        postNewReferee(evt) {
         //   this.offerForm.studentId = this.selectedStudent.id;        
-        //   console.log("Posting:", this.offerForm);
-        //   // alert("Posting!");
+          console.log("Posting:", this.refereeForm);
+          // alert("Posting!");
   
-        //   fetch('api/offer/create.php', {
-        //       method:'POST',
-        //       body: JSON.stringify(this.offerForm),
-        //       headers: {
-        //         "Content-Type": "application/json; charset=utf-8"
-        //       }
-        //     })
-        //     .then( response => response.json() )
-        //     .then( json => {
-        //       console.log("Returned from post:", json);
-        //       // TODO: test a result was returned!
-        //       this.offers = json;
+          fetch('api/referees/create.php', {
+              method:'POST',
+              body: JSON.stringify(this.refereeForm),
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
+              }
+            })
+            .then( response => response.json() )
+            .then( json => {
+              console.log("Returned from post:", json);
+              // TODO: test a result was returned!
+              this.referees = json;
               
-        //       // reset the form
-        //       this.offerForm = {};
-        //     });
-        // }
+              // reset the form
+              this.refereeForm = {};
+            });
+        },
+
+        postNewGame(evt) {
+            //   this.offerForm.studentId = this.selectedStudent.id;        
+              console.log("Posting:", this.gameForm);
+              // alert("Posting!");
+      
+              fetch('api/games/create.php', {
+                  method:'POST',
+                  body: JSON.stringify(this.gameForm),
+                  headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                  }
+                })
+                .then( response => response.json() )
+                .then( json => {
+                  console.log("Returned from post:", json);
+                  // TODO: test a result was returned!
+                  this.games = json;
+                  
+                  // reset the form
+                  this.gameForm = {};
+                });
+            }
     },
     created() {
         this.fetchRefereeData();
         this.fetchGameData();
-        console.log("Here")
     }
   
   }

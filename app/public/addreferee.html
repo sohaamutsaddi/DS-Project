@@ -15,7 +15,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="container m-5">
+    <div id="gameApp" class="container m-5">
         <h3 class="text-center">Add Referee
             <span class="m-3">
                 <a href="referee.html">
@@ -24,31 +24,32 @@
             </span>
         </h3>
 
-        <form v-on:submit.prevent="">
+        <form v-on:submit.prevent="postNewReferee">
             <div class="mb-3">
-              <label for="" class="form-label">First Name</label>
-              <input type="text" v-model=""
-               class="form-control" id="">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" v-model="refereeForm.firstName"
+               class="form-control" id="firstName">
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Last Name</label>
-              <input type="text" v-model="" class="form-control" id="">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" v-model="refereeForm.lastName" class="form-control" id="lastName">
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Age</label>
-              <input type="number" v-model="" class="form-control" id="">
+              <label for="rating" class="form-label">Rating</label>
+              <input type="number" v-model="refereeForm.rating" class="form-control" id="rating">
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Grade</label>
-              <input type="text" v-model="" class="form-control" id="">
-            </div>
+              <label for="age" class="form-label">Age</label>
+              <input type="number" v-model="refereeForm.age" class="form-control" id="age">
+          </div>
             <div class="mb-3">
-                <label for="" class="form-label">Rating</label>
-                <input type="number" v-model="" class="form-control" id="">
+              <label for="refGrade" class="form-label">Grade</label>
+              <input type="number" v-model="refereeForm.refGrade" class="form-control" id="refGrade">
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
           </form>
     </div>
+    <script src="js/index.js"></script>
   </body>
 </html>
     
