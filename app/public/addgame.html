@@ -15,7 +15,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="container m-5">
+    <div id="gameApp" class="container m-5">
         <h3 class="text-center">Add Game
             <span class="m-3">
                 <a href="game.html">
@@ -24,31 +24,24 @@
             </span>
         </h3>
 
-        <form v-on:submit.prevent="">
+        <form v-on:submit.prevent="postNewGame">
             <div class="mb-3">
-              <label for="" class="form-label">Team A</label>
-              <input type="text" v-model=""
-               class="form-control" id="">
+              <label for="field" class="form-label">Field</label>
+              <input type="text" v-model="gameForm.field"
+               class="form-control" id="field">
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Team B</label>
-              <input type="text" v-model="" class="form-control" id="">
+              <label for="gameTime" class="form-label">Time</label>
+              <input type="text" v-model="gameForm.gameTime" class="form-control" id="gameTime">
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Date</label>
-              <input type="date" v-model="" class="form-control" id="">
-            </div>
-            <div class="mb-3">
-              <label for="" class="form-label">Referee Status</label>
-              <input type="text" v-model="" class="form-control" id="">
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Referee</label>
-                <input type="number" v-model="" class="form-control" id="">
+              <label for="matchDate" class="form-label">Date</label>
+              <input type="date" v-model="gameForm.matchDate" class="form-control" id="matchDate">
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
           </form>
     </div>
+    <script src="js/index.js"></script>
   </body>
 </html>
     
