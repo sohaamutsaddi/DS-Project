@@ -36,9 +36,9 @@
         </div>
       </div>
     </nav>
-    <div class="container">
+    <div id="gameApp" class="container">
         <div class="row my-5">
-            <h3 class="text-center">Existing Referees 
+            <h3 class="text-center">Existing Referees
               <span class="m-3">
                 <a href="addreferee.html">
                   <button type="button" class="btn btn-success btn-sm">Add New</button>
@@ -57,22 +57,14 @@
               </tr>
             </thead>
               <tbody>
-                  <tr>
-                      <td>1</td>
-                      <td>John Doe</td>
-                      <td>4.0</td>
-                      <td>42</td>
-                      <td>A</td>
+                  <tr v-for="r in referees">
+                      <td>{{r.refID}}</td>
+                      <td>{{r.firstName}} {{r.lastName}}</td>
+                      <td>{{r.rating}}</td>
+                      <td>{{r.age}}</td>
+                      <td>{{r.refGrade}}</td>
                       <td><span class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Alex Krang</td>
-                    <td>2.0</td>
-                    <td>32</td>
-                    <td>B</td>
-                    <td><span class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
-                </tr>
               </tbody>
           </table>
         </div>
@@ -106,6 +98,7 @@
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
+    <script src="js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
