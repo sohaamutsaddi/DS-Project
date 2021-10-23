@@ -38,18 +38,12 @@
     </nav>
     <div id="gameApp" class="container">
         <div class="row my-5">
-            <h3 class="text-center">Existing Referees
-              <span class="m-3">
-                <a href="addreferee.html">
-                  <button type="button" class="btn btn-success btn-sm">Add New</button>
-                </a>
-              </span>
-            </h3>
+            <h3 class="text-center">Existing Referees</h3>
         <table class="table text-center">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
                 <th>Rating</th>
                 <th>Age</th>
                 <th>Grade</th>
@@ -58,43 +52,44 @@
             </thead>
               <tbody>
                   <tr v-for="r in referees">
-                      <td>{{r.refID}}</td>
-                      <td>{{r.firstName}} {{r.lastName}}</td>
+                      <td>{{r.firstName}}</td>
+                      <td>{{r.lastName}}</td>
                       <td>{{r.rating}}</td>
                       <td>{{r.age}}</td>
                       <td>{{r.refGrade}}</td>
-                      <td><span class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
+                      <td><span v-on:click="handleEditReferee(r)" class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span></a><span v-on:click="postDeleteReferee(r)" class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
                   </tr>
               </tbody>
           </table>
         </div>
-          <!-- <div class="my-5 row">
-            <h3 class="text-center">Add Referee</h3>
-            <form v-on:submit.prevent="">
-                <div class="mb-3">
-                  <label for="" class="form-label">First Name</label>
-                  <input type="text" v-model=""
-                   class="form-control" id="">
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Last Name</label>
-                  <input type="text" v-model="" class="form-control" id="">
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Age</label>
-                  <input type="number" v-model="" class="form-control" id="">
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Grade</label>
-                  <input type="text" v-model="" class="form-control" id="">
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Rating</label>
-                    <input type="number" v-model="" class="form-control" id="">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-          </div> -->
+          <div class="my-5 row">
+            <h3 class="text-center">{{ selectedReferee === null ? "Add Referee" : "Edit Referee" }}</h3>
+            <form v-on:submit.prevent="postReferee">
+              <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" v-model="refereeForm.firstName"
+                 class="form-control" id="firstName">
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" v-model="refereeForm.lastName" class="form-control" id="lastName">
+              </div>
+              <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="number" v-model="refereeForm.rating" class="form-control" id="rating">
+              </div>
+              <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" v-model="refereeForm.age" class="form-control" id="age">
+              </div>
+              <div class="mb-3">
+                <label for="refGrade" class="form-label">Grade</label>
+                <input type="number" v-model="refereeForm.refGrade" class="form-control" id="refGrade">
+              </div>
+              <button type="submit" class="m-1 btn btn-success">{{ selectedReferee === null ? "Add" : "Edit" }}</button> 
+              <button v-if="selectedReferee" v-on:click="handleResetEdit" type="submit" class="btn btn-danger">Cancel</button> 
+            </form>
+          </div>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
