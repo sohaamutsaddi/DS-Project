@@ -22,6 +22,14 @@ const SomeApp = {
             })
         },
 
+        selectReferee(r) {
+          if (r == this.selectedReferee) {
+              return;
+          }
+          this.selectedReferee = r;
+          this.games = [];
+          this.fetchGameData(this.selectedReferee);
+        },
         fetchGameData() {
             fetch('/api/games/')
             .then( response => response.json() )
