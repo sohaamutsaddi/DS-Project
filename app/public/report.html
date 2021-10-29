@@ -39,52 +39,75 @@
         </div>
       </div>
     </nav>
-    <div id="gameApp" class="container">
+    <div id="reportApp" class="container">
         <div class="row my-5">
-            <h3 class="text-center">Games</h3>
+            <div class='col col-12'>
+                <div v-for='r in referees' v-on:click='selectReferee(r)'
+                    :class="['referee', {selected: selectedReferee && r.refID == selectedReferee.id}]">
+                    <span class='lastName'>{{ r.firstName }} {{ r.lastName }}</span>
+                </div>
+                <!-- <form>
+                    Between <input type='date' v-bind='starts'> and <input type='date' v-bind='end'>
+                    <button type='button' v-on:click="selectDates(start, end)"
+                    :class="['games', {selected: selectedStartDate && start.matchDate == selectedStartDate.id}]">Confirm</button>
+                </form> -->
+            </div>
+
+        <div class='col col-12' >      
+        <h3 class="text-center">Games Assigned to Referee</h3>
         <table class="table text-center">
             <thead>
               <tr>
                 <th>Field</th>
                 <th>Time</th>
                 <th>Date</th>
-                <th>Actions</th>
+                <th>Position</th>
+                <th>Status</th>
               </tr>
             </thead>
               <tbody>
-                  <tr v-for="g in games">
-                      <td>{{g.field}}</td>
-                      <td>{{g.gameTime}}</td>
-                      <td>{{g.matchDate}}</td>
-                      <td><span v-on:click="handleEditGame(g)" class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span></a><span v-on:click="postDeleteGame(g)" class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
-                  </tr>
+                <tr v-for="a in assignments">
+                    <td>{{a.field}}</td>
+                    <td>{{a.gameTime}}</td>
+                    <td>{{a.matchDate}}</td>
+                    <td>{{a.position}}</td>
+                    <td>{{a.ref_status}}</td>
+                </tr>
               </tbody>
           </table>
+          </div>
         </div>
-        <div class="row my-5">
-          <h3 class="text-center">{{ selectedGame === null ? "Add" : "Edit" }}</h3>
-          <form v-on:submit.prevent="postGame">
-            <div class="mb-3">
-              <label for="field" class="form-label">Field</label>
-              <input type="text" v-model="gameForm.field"
-               class="form-control" id="field">
-            </div>
-            <div class="mb-3">
-              <label for="gameTime" class="form-label">Time</label>
-              <input type="text" v-model="gameForm.gameTime" class="form-control" id="gameTime">
-            </div>
-            <div class="mb-3">
-              <label for="matchDate" class="form-label">Date</label>
-              <input type="date" v-model="gameForm.matchDate" class="form-control" id="matchDate">
-            </div>
-            <button type="submit" class="m-1 btn btn-success">{{ selectedGame === null ? "Add" : "Edit" }}</button> 
-            <button v-if="selectedGame" v-on:click="handleResetEditGame" type="submit" class="btn btn-danger">Cancel</button> 
-          </form>
+    </div>
+    <div id="unassignedApp" class='container'>
+        <h3 class="text-center">Games with an Unassigned Referee</h3>
+        <div class = 'col col-12'>
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Position</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </thead>
+                <tbody>
+                  <tr v-for="i in assigns">
+                      <td>{{i.field}}</td>
+                      <td>{{i.matchDate}}</td>
+                      <td>{{i.ref_status}}</td>
+                      <td>{{i.position}}</td>
+                      <td>{{i.firstName}}</td>
+                      <td>{{i.lastName }}</td>
+                  </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="js/index.js"></script>
+    <script src="js/report.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
