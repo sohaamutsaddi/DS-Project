@@ -5,7 +5,8 @@ const SomeApp = {
         games: [],
         refereeForm:{},
         gameForm:{},
-        selectedReferee:null
+        selectedGame: null,
+        selectedReferee: null
       }
     },
     computed: {},

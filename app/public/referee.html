@@ -60,7 +60,7 @@
                       <td>{{r.rating}}</td>
                       <td>{{r.age}}</td>
                       <td>{{r.refGrade}}</td>
-                      <td><span v-on:click="handleEditReferee(r)" class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span></a><span v-on:click="postDeleteReferee(r)" class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
+                      <td><span v-on:click="handleEditReferee(r)" class="me-3 action_icon"><i class="bi bi-pencil-fill editIcon"></i></span></a><span v-on:click="postDeleteReferee(r)" class="me-3 action_icon deleteIcon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
                   </tr>
               </tbody>
           </table>
@@ -69,25 +69,25 @@
             <h3 class="text-center">{{ selectedReferee === null ? "Add Referee" : "Edit Referee" }}</h3>
             <form v-on:submit.prevent="postReferee">
               <div class="mb-3">
-                <label for="firstName" class="form-label">First Name</label>
+                <label for="firstName" class="form-label">First Name <span class="req">*</span></label>
                 <input type="text" v-model="refereeForm.firstName"
-                 class="form-control" id="firstName">
+                 class="form-control" id="firstName" required="required">
               </div>
               <div class="mb-3">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" v-model="refereeForm.lastName" class="form-control" id="lastName">
+                <label for="lastName" class="form-label">Last Name <span class="req">*</span></label>
+                <input type="text" v-model="refereeForm.lastName" class="form-control" id="lastName"  required="required">
               </div>
               <div class="mb-3">
-                <label for="rating" class="form-label">Rating</label>
-                <input type="number" v-model="refereeForm.rating" class="form-control" id="rating">
+                <label for="rating" class="form-label">Rating <span class="req">*</span></label>
+                <input type="number" v-model="refereeForm.rating" class="form-control" id="rating"  required="required">
               </div>
               <div class="mb-3">
-                <label for="age" class="form-label">Age</label>
-                <input type="number" v-model="refereeForm.age" class="form-control" id="age">
+                <label for="age" class="form-label">Age <span class="req">*</span></label>
+                <input type="number" v-model="refereeForm.age" class="form-control" id="age"  required="required">
               </div>
               <div class="mb-3">
-                <label for="refGrade" class="form-label">Grade</label>
-                <input type="number" v-model="refereeForm.refGrade" class="form-control" id="refGrade">
+                <label for="refGrade" class="form-label">Grade <span class="req">*</span></label>
+                <input type="number" v-model="refereeForm.refGrade" class="form-control" id="refGrade"  required="required">
               </div>
               <button type="submit" class="m-1 btn btn-success">{{ selectedReferee === null ? "Add" : "Edit" }}</button> 
               <button v-if="selectedReferee" v-on:click="handleResetEdit" type="submit" class="btn btn-danger">Cancel</button> 

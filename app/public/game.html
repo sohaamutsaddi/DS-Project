@@ -56,26 +56,26 @@
                       <td>{{g.field}}</td>
                       <td>{{g.gameTime}}</td>
                       <td>{{g.matchDate}}</td>
-                      <td><span v-on:click="handleEditGame(g)" class="me-3 action_icon"><i class="bi bi-pencil-fill"></i></span></a><span v-on:click="postDeleteGame(g)" class="me-3 action_icon"><i class="bi bi-trash-fill"></i></span><span class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
+                      <td><span v-on:click="handleEditGame(g)" class="me-3 action_icon editIcon"><i class="bi bi-pencil-fill"></i></span></a><span v-on:click="postDeleteGame(g)" class="me-3 action_icon deleteIcon"><i class="bi bi-trash-fill"></i></span><span  v-on:click="" class="me-3 action_icon"><i class="bi bi-arrow-up-right-circle-fill"></i></span></td>
                   </tr>
               </tbody>
           </table>
         </div>
         <div class="row my-5">
-          <h3 class="text-center">{{ selectedGame === null ? "Add" : "Edit" }}</h3>
+          <h3 class="text-center">{{ selectedGame === null ? "Add Game" : "Edit Game" }}</h3>
           <form v-on:submit.prevent="postGame">
             <div class="mb-3">
-              <label for="field" class="form-label">Field</label>
+              <label for="field" class="form-label">Field<span class="req">*</span></label>
               <input type="text" v-model="gameForm.field"
-               class="form-control" id="field">
+               class="form-control" id="field" required="required">
             </div>
             <div class="mb-3">
-              <label for="gameTime" class="form-label">Time</label>
-              <input type="text" v-model="gameForm.gameTime" class="form-control" id="gameTime">
+              <label for="gameTime" class="form-label">Time<span class="req">*</span></label>
+              <input type="text" v-model="gameForm.gameTime" class="form-control" id="gameTime"  required="required">
             </div>
             <div class="mb-3">
-              <label for="matchDate" class="form-label">Date</label>
-              <input type="date" v-model="gameForm.matchDate" class="form-control" id="matchDate">
+              <label for="matchDate" class="form-label">Date<span class="req">*</span></label>
+              <input type="date" v-model="gameForm.matchDate" class="form-control" id="matchDate"  required="required">
             </div>
             <button type="submit" class="m-1 btn btn-success">{{ selectedGame === null ? "Add" : "Edit" }}</button> 
             <button v-if="selectedGame" v-on:click="handleResetEditGame" type="submit" class="btn btn-danger">Cancel</button> 
