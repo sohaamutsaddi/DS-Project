@@ -13,8 +13,10 @@ if (isset($_GET['referee'])) {
   // This is an example of a parameterized query
     $sql = 'SELECT field, gameTime, matchDate, ref_status, position 
     FROM games left outer join assignment on assignment.matchID = games.gameID WHERE refereeID = ?';
-    $vars = [ $_GET['referee'] ];
+    $vars = [ $_GET['referee']];
 }
+// matchDate > ?, matchDate < ?'
+// $_GET['start'], $_GET['end'] 
 
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);

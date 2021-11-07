@@ -22,6 +22,7 @@ const SomeApp = {
         selectDates(s,e) {
             this.selectedStartDate = s;
             this.selectedEndDate = e;
+            this.games = []
             this.fetchAssignDatesData(this.selectedReferee, this.selectedStartDate, this.selectedEndDate)
         },
         fetchRefereeData() {

@@ -49,13 +49,12 @@
                     :class="['referee', {selected: selectedReferee && r.refID == selectedReferee.id}]">
                     <span class='lastName'>{{ r.firstName }} {{ r.lastName }}</span>
                 </div>
-                <!-- <form>
-                    Between <input type='date' v-bind='starts'> and <input type='date' v-bind='end'>
-                    <button type='button' v-on:click="selectDates(start, end)"
-                    :class="['games', {selected: selectedStartDate && start.matchDate == selectedStartDate.id}]">Confirm</button>
-                </form> -->
+                <form>
+                    Between <input type='date' value="2021-10-31" v-bind='startdate'> and <input type='date' value="2022-10-31" v-bind='enddate'>
+                    <button type='button' v-on:click="selectDates(startdate, enddate)">Confirm</button>
+                </form>
             </div>
-
+            <!-- :class="['games', {selected: selectedStartDate && start.matchDate == selectedStartDate.id}]" -->
         <div class='col col-12' >      
         <h3 class="text-center">Games Assigned to Referee</h3>
         <table class="table text-center">
