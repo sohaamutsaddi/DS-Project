@@ -5,8 +5,10 @@ const SomeApp = {
         games: [],
         refereeForm:{},
         gameForm:{},
+        assignForm:{},
+        assign:null,
         selectedGame: null,
-        selectedReferee: null
+        selectedReferee: null,
       }
     },
     computed: {},
@@ -22,6 +24,18 @@ const SomeApp = {
                 console.error(err);
             })
         },
+
+        fetchAssignmentData() {
+          fetch('/api/assignment/')
+          .then( response => response.json() )
+          .then( (responseJson) => {
+              console.log(responseJson);
+              this.assign = responseJson;
+          })
+          .catch( (err) => {
+              console.error(err);
+          })
+      },
 
         selectReferee(r) {
           if (r == this.selectedReferee) {
@@ -89,28 +103,52 @@ const SomeApp = {
             });
         },
 
-        handleEditReferee(r) {
+        postAssignment(evt) {
+          //   this.offerForm.studentId = this.selectedStudent.id;        
+            console.log("Posting:", this.assignForm);
+            // alert("Posting!");
+    
+            fetch('api/assignment/create.php', {
+                method:'POST',
+                body: JSON.stringify(this.assignForm),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+              .then( response => response.json() )
+              .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.assign = json;
+                
+                // reset the form
+                this.assignForm = {};
+                this.fetchAssignmentData();
+              });
+          },
+
+      handleEditReferee(r) {
           this.selectedReferee = r;
           console.log("here")
           this.refereeForm = Object.assign({}, this.selectedReferee); //set form to data
           console.log("here2")
         },
 
-        handleResetEdit(){
+      handleResetEdit(){
           this.selectedReferee = null;
           this.refereeForm = {}
       },
 
-        postReferee(evt){
-          if(this.selectedReferee){
-              this.postEditReferee();
-          }
-          else{
-              this.postNewReferee();
-          }
-        },
+      postReferee(evt){
+        if(this.selectedReferee){
+            this.postEditReferee();
+        }
+        else{
+            this.postNewReferee();
+        }
+      },
 
-        postEditReferee(evt){
+      postEditReferee(evt){
           // if you want to update you need an id
           this.refereeForm.id = this.selectedReferee.id       
           console.log("Updating:", this.refereeForm);
@@ -179,7 +217,7 @@ const SomeApp = {
           // clear out the form and selected referees
           this.handleResetEditGame();
         });
-    },
+      },
 
       postDeleteGame(o) {  
         if ( !confirm("Are you sure you want to delete the game " + o.firstName + "?") ) {
@@ -209,7 +247,7 @@ const SomeApp = {
       handleResetEditGame(){
         this.selectedGame = null;
         this.gameForm = {}
-    },
+      },
 
       handleEditGame(r) {
         this.selectedGame = r;
@@ -225,13 +263,42 @@ const SomeApp = {
         else{
             this.postNewGame();
         }
-      }
-    },
+      },
 
+      postDeleteAssignment(o) {  
+        if ( !confirm("Are you sure you want to delete the assignment?") ) {
+            return;
+        }  
+        
+        console.log("Delete!", o);
+  
+        fetch('api/assignment/delete.php', {
+            method:'POST',
+            body: JSON.stringify(o),
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          })
+          .then( response => response.json() )
+          .then( json => {
+            console.log("Returned from post:", json);
+            // TODO: test a result was returned!
+            this.assign = json;
+            
+            // reset the form
+            this.handleResetEdit();
+            // this.fetchAssignmentData();
+          });
+      },
+
+
+  
+    },
 
     created() {
         this.fetchRefereeData();
         this.fetchGameData();
+        this.fetchAssignmentData();
     }
   
   }

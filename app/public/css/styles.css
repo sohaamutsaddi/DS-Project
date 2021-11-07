@@ -11,3 +11,15 @@
     color:#990000;
 
 }
+
+.bg-red{
+    color:#990000;
+}
+
+.drop{
+    padding: 30px;
+}
+
+select{
+    padding: 0.2rem;
+}
