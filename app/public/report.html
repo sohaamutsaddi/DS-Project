@@ -45,18 +45,31 @@
     <div id="reportApp" class="container">
         <div class="row my-5">
             <div class='col col-12'>
-                <div v-for='r in referees' v-on:click='selectReferee(r)'
+                <!-- <div v-for='r in referees' v-on:click='selectReferee(r)'
                     :class="['referee', {selected: selectedReferee && r.refID == selectedReferee.id}]">
                     <span class='lastName'>{{ r.firstName }} {{ r.lastName }}</span>
-                </div>
-                <form>
-                    Between <input type='date' value="2021-10-31" v-bind='startdate'> and <input type='date' value="2022-10-31" v-bind='enddate'>
-                    <button type='button' v-on:click="selectDates(startdate, enddate)">Confirm</button>
+                </div> -->
+                <form v-on:submit.prevent="postDate">
+                  <div class="mb-3">
+                    <label for="assignreferee" class="form-label">Select referee <span class="req">*</span></label>
+                    <br>
+                    <select name="reportreferee" v-model="dateForm.refereeID" id="ref_ID">
+                      <option  v-for="r in referees" v-bind:value="r.refID">{{r.firstName}} {{r.lastName}}</option>    
+                    </select>
+                  </div>
+                    <div>
+                      Between <input type='date' v-model='dateForm.start' id='start'> 
+                    </div>
+                    <div>
+                    and <input type='date' v-model='dateForm.end' id='end'>
+                    </div>
+                    <button type='submit'>Confirm</button>
                 </form>
             </div>
             <!-- :class="['games', {selected: selectedStartDate && start.matchDate == selectedStartDate.id}]" -->
         <div class='col col-12' >      
         <h3 class="text-center">Games Assigned to Referee</h3>
+        <p><a href='api/report/?format=csv' download>download as a csv</a></p>
         <table class="table text-center">
             <thead>
               <tr>
@@ -82,6 +95,7 @@
     </div>
     <div id="unassignedApp" class='container'>
         <h3 class="text-center">Games with an Unassigned Referee</h3>
+        <p><a href='api/unreport/?format=csv' download>download as a csv</a></p>
         <div class = 'col col-12'>
             <table class="table text-center">
               <thead>

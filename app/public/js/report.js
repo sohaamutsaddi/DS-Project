@@ -4,6 +4,7 @@ const SomeApp = {
         referees: [],
         games: [],
         assignments: [],
+        dateForm: {},
         selectedReferee:null,
         selectedStartDate:null,
         selectedEndDate:null
@@ -35,6 +36,27 @@ const SomeApp = {
             .catch( (err) => {
                 console.error(err);
             })
+        },
+        postDate(evt){
+            // this.dateForm.referee = this.selectedReferee.refID;
+            fetch('api/report/?referee=' + this.dateForm.refereeID + '&start=' + this.dateForm.start + "&end=" + this.dateForm.end, {
+                method:'POST',
+                body: JSON.stringify(this.dateForm),
+                headers: {
+                  "Content-Type": "application/json; charset=utf-8"
+                }
+              })
+            .then( response => response.json() )
+            .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.assignments = json;
+                
+                // reset the form
+                this.dateForm = {};
+              });
+
+
         },
         fetchAssignData(r) {
             console.log('fetching data for ', r);

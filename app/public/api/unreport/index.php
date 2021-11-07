@@ -20,13 +20,15 @@ $offers = $stmt->fetchAll();
 
 if (isset($_GET['format']) && $_GET['format']=='csv') {
   header('Content-Type: text/csv');
-  echo "Name,Username,MaxSalary,OfferCount\r\n";
+  echo "Field,Date,Status,Position,First,Last\r\n";
 
   foreach($offers as $o){
-    echo "\"".$o['name']. "\","
-        .$o['username']. ","
-        .$o['maxSalary']. ","
-        .$o['offerCount']. "\r\n";
+    echo "\"".$o['field']. "\","
+        .$o['matchDate']. ","
+        .$o['ref_status']. ","
+        .$o['position']. ","
+        .$o['firstName']. ","
+        .$o['lastName']. "\r\n";
     }
 
 
