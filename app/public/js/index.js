@@ -220,7 +220,7 @@ const SomeApp = {
       },
 
       postDeleteGame(o) {  
-        if ( !confirm("Are you sure you want to delete the game " + o.firstName + "?") ) {
+        if ( !confirm("Are you sure you want to delete the game at" + o.field + "?") ) {
             return;
         }  
         
@@ -266,7 +266,7 @@ const SomeApp = {
       },
 
       postDeleteAssignment(o) {  
-        if ( !confirm("Are you sure you want to delete the assignment?") ) {
+        if ( !confirm("Are you sure you want to delete the assignment of referee " + o.firstName + " at "  + o.field + "?" ) ) {
             return;
         }  
         

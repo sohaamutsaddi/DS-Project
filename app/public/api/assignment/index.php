@@ -7,7 +7,7 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 $sql = 'SELECT assignmentID, field, matchDate, ref_status, position, firstName, lastName
-from assignment left outer join games on assignment.matchID = games.gameID right outer join referee on assignment.refereeID = referee.refID';
+from assignment right outer join games on assignment.matchID = games.gameID right outer join referee on assignment.refereeID = referee.refID';
 $vars = [];
 
 // if (isset($_GET['guid'])) {
