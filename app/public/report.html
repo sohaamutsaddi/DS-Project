@@ -69,7 +69,7 @@
             <!-- :class="['games', {selected: selectedStartDate && start.matchDate == selectedStartDate.id}]" -->
         <div class='col col-12' >      
         <h3 class="text-center">Games Assigned to Referee </h3>
-        <p class="text-center"><a href='api/report/?format=csv' download>download as a csv</a></p>
+        <p class="text-center"><a v-bind:href="'api/report/?referee=' + dateForm.refereeID + '&start=' + dateForm.start + '&end=' + dateForm.end + '&format=csv'" download>download as a csv</a></p>
         <table class="table text-center">
             <thead>
               <tr>

@@ -53,7 +53,7 @@ const SomeApp = {
                 this.assignments = json;
                 
                 // reset the form
-                this.dateForm = {};
+                //this.dateForm = {};
               });
 
 
